@@ -175,7 +175,6 @@ conflict with this element.
 <polymer-element name="paper-input-decorator" layout vertical
   on-transitionEnd="{{transitionEndAction}}" on-webkitTransitionEnd="{{transitionEndAction}}"
   on-input="{{inputAction}}"
-  on-down="{{downAction}}"
   on-tap="{{tapAction}}"
   on-char-counter-error="{{charCounterErrorAction}}">
 
@@ -494,17 +493,6 @@ conflict with this element.
         if (this.autoValidate) {
           this.validate();
         }
-      },
-
-      downAction: function(e) {
-        // eat the event and do nothing if already focused
-        if (e.target !== this.input && this.focused) {
-          e.preventDefault();
-          return;
-        }
-        // cache the event here because "down" fires before "focus" when tapping on
-        // the input and the underline animation runs on focus change
-        this.lastEvent = e;
       },
 
       tapAction: function(e) {

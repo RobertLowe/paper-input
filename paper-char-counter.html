@@ -102,6 +102,14 @@ Theming
       targetElement.addEventListener('input', this.inputAction.bind(this));
 		},
 
+    targetChanged: function(){
+      if (!this.target)
+        return;
+      var targetElement = document.getElementById(this.target);
+      this._maxChars = targetElement.maxLength;
+      targetElement.addEventListener('input', this.inputAction.bind(this));
+    },
+
     inputAction: function(e) {
       this._charCount = e.target.value.length;
       this._isCounterInvalid = this._maxChars && this._charCount >= this._maxChars;
